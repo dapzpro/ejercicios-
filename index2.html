@@ -1,0 +1,109 @@
+<html>
+<head>
+    <style>
+      .calculadora {
+          width: 500px;
+          height: 600px;
+          background-color: black;
+          color:white;
+          margin: auto;
+         display: flex;
+         flex-flow: row wrap;
+         row-gap: 5px;
+         column-gap: 5px;
+        box-sizing: border-box;
+       }
+       .calculadora * {
+        flex: 1 1 20%;
+        font-size: 20px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+       }
+    </style>
+  
+</head>
+<body>
+    <div class="calculadora">
+        <div></div>
+        <input id="texto2" style= "flex: 0 1 60%; justify-self : flex-start; font-size: 20px ; text-align: right;" type= "text"  disabled />
+        <input id="texto" style= "flex: 1 1 100%; font-size: 30px; box-sizing: border-box; text-align: right;" type="text" disabled />
+        <button onclick="processNumber(7)">7</button>
+        <button onclick="processNumber(8)">8</button>
+        <button onclick="processNumber(9)">9</button>
+        <button onclick="processOperator('/')">÷</button>
+        <button onclick="processNumber(4)">4</button>
+        <button onclick="processNumber(5)">5</button>
+        <button onclick="processNumber(6)">6</button>
+        <button onclick="processOperator('x')">X</button>
+        <button onclick="processNumber(1)">1</button>
+        <button onclick="processNumber(2)">2</button>
+        <button onclick="processNumber(3)">3</button>
+        <button onclick="processOperator('-')">-</button>
+        <button style="flex:1 1 45.5%" onclick="processNumber(0)">0</button>
+        <button onclick="processOperator('+')">+</button>
+        <button onclick="processEqual()">=</button>
+    </div>
+    <script>
+        var num1 
+        var action
+        var num2
+        var element= document.getElementById("texto")
+        var element2= document.getElementById("texto2")
+        function processNumber (num){
+            if (action==""){
+                element.value=""
+                action=undefined
+            }
+            var currentValue2= element2.value
+            element2.value=currentValue2+num;
+            
+            var currentValue= element.value
+            element.value=currentValue+num;
+        }
+
+        function operatorSmallBox(operator){
+            num1=parseInt(element2.value)
+            action=operator   
+            element2.value=num1+operator
+            
+        }
+        function equalSmallBox(){
+            element2.value=num1+action+num2+'='
+        }
+
+
+
+
+        function processOperator (operator){
+            operatorSmallBox(operator)
+            num1=parseInt(element.value)
+            element.value=""
+            action=operator   
+        } 
+
+        function processEqual() {
+            var result
+          num2=parseInt(element.value)
+          if (action=="x"){
+             result=num1*num2
+         }else if (action=="+"){
+             result= num1+num2
+          }else if(action=="-"){
+              result=num1-num2;
+          }else if(action=="/"){
+              result= num1/num2;
+          }else{
+              console.log("Syntax error")
+            
+          }
+          equalSmallBox()
+          num1=0
+          num2=0
+          action=""
+          element.value=result;
+          
+        }
+        
+    </script>
+</body>
+</html>
+      
