@@ -1,0 +1,22 @@
+{
+  "name": "ejercicios",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dapzpro/ejercicios-.git"
+  },
+  "author": "David",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dapzpro/ejercicios-/issues"
+  },
+  "homepage": "https://github.com/dapzpro/ejercicios-#readme",
+  "dependencies": {
+    "jest": "^27.4.5"
+  }
+}
